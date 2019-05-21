@@ -16,6 +16,7 @@ import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga"; // SAGA
 import rootReducers from "./redux/rootReducers";
 import rootSagas from "./redux/rootSagas";
+import logger from 'redux-logger'
 
 // Router
 import MyRouter from "./router/router";
@@ -28,7 +29,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 let store = createStore(
   rootReducers,
   {},
-  composeEnhancers(applyMiddleware(sagaMiddleware))
+  composeEnhancers(applyMiddleware(sagaMiddleware, logger))
 );
 
 // run the saga

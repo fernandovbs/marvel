@@ -9,7 +9,7 @@ import types from '../../redux/characters/types';
 class Home extends Component {
 
   // eslint-disable-next-line react/no-typos
-  ComponentDidMount() {
+  componentDidMount() {
     this.props.dispatch({
       type: types.REQUEST
     })
@@ -28,7 +28,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  return {characters: state.characters};
+  return {characters: state.Characters.characters};
 }
 
 export default connect(mapStateToProps)(Home);

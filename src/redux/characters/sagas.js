@@ -18,7 +18,7 @@ export const setError = error => ({
 export function* charactersSagas() {
   try {
     const { data } = yield call(CharacterService.getCharacters, `apikey=${publicKey}`)
-    yield put(setCharacters(data))
+    yield put(setCharacters(data.data.results))
   } catch (error) {
     yield put(setError(error))
   }
