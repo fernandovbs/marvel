@@ -1,11 +1,14 @@
 import React from "react";
 import Button from "../Button/Button";
 
-const charactersListItem = props => (
+const CharacterListItem = ({character}) => {
+  const thumbnail = `${character.thumbnail.path}.${character.thumbnail.extension}`
+  return (
   <div>
-    <h1> character name </h1>
-    <Button>Details</Button>
+    <h1> {character.name} </h1>
+    <img src={thumbnail} />
+    <p> {character.description} </p>
   </div>
-);
+)};
 
-export default charactersListItem;
+export default CharacterListItem;
