@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import CharacterListItem from '../CharacterListItem/CharacterListItem';
 import types from '../../redux/characters/types';
+import { Row } from '../../styles'
 
 const CharacterList = props => {
   useEffect(() => {
@@ -10,8 +11,12 @@ const CharacterList = props => {
     });
   }, []);
 
-  return props.characters.map(character => <CharacterListItem key={character.id} character={character} />);
-};
+  return (
+      <Row>
+        {props.characters.map(character => <CharacterListItem key={character.id} character={character} />)}
+      </Row>
+    )
+  };
 
 function mapStateToProps(state) {
   return { characters: state.Characters.characters };
