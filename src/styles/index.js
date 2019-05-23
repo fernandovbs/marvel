@@ -28,7 +28,6 @@ export const Container = styled.div`
 export const Row = styled.div`
     width: 100%;
     height: auto;
-    float: left;
     box-sizing: border-box;
     &:before,
     &:after {
@@ -41,7 +40,8 @@ export const Row = styled.div`
 `
 
 export const Column = styled.div`
-    float: left;
+    display: inline-block;
+    vertical-align: top;
     padding: .25rem;
     min-height: 1px;
     box-sizing: border-box;

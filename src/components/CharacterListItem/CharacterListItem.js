@@ -19,6 +19,7 @@ const CharacterListItem = ({character}) => {
       <ThumbnailImg src={thumbnailUrl} />
     </Thumbnail>
     <p> {character.description} </p>
+    <Button />
   </Column>
 )};
 
