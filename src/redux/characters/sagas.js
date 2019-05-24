@@ -15,9 +15,17 @@ export const setError = error => ({
   error
 })
 
-export function* charactersSagas() {
+export function* charactersSagas({ searchString } = '') {
   try {
-    const { data } = yield call(CharacterService.getCharacters, `apikey=${publicKey}`)
+    let params = [
+      `apikey=${publicKey}`, 
+    ];
+
+    if (searchString) {
+      params.push(`nameStartsWith=${searchString}`)
+    }
+
+    const { data } = yield call(CharacterService.getCharacters, `${params.join('&')}`);
     yield put(setCharacters(data.data.results))
   } catch (error) {
     yield put(setError(error))

@@ -15,7 +15,9 @@ const DetailsButton = styled.a`
 `
 
 const Button = (props) => (
-    <DetailsButton onClick={() => console.log("props.dispatch({type: types.GET_CHARACTER})")}>Detalhes</DetailsButton>
+  <DetailsButton onClick={() => console.log('props.dispatch({type: types.GET_CHARACTER})')}>
+    Detalhes
+  </DetailsButton>
 )
 
 export default connect(

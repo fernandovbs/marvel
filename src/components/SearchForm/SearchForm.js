@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import styled from 'styled-components'
+import types from '../../redux/characters/types';
+import { connect } from 'react-redux';
 
 const SearchContainer = styled.div`
   display: block;
@@ -13,7 +15,30 @@ const Input = styled.input`
 `
 
 class SearchForm extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchString: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.dispatch({
+      type: types.REQUEST,
+      searchString: this.state.searchString
+    });
+  }
+
+  handleChange(e) {
+    this.setState({ searchString: e.target.value })
+    this.props.dispatch({
+      type: types.REQUEST,
+      searchString: this.state.searchString
+    });
+  }
 
   render() {
     const {
@@ -43,8 +68,9 @@ class SearchForm extends Component {
             disabled={disabled}
             className={className}
             maxLength={maxLength}
-            onKeyUp={onKeyUp}
+            onChange={this.handleChange}
             defaultValue={defaultValue}
+            value={this.state.searchString}
             {...extraProps}
           />
         </SearchContainer>
@@ -53,4 +79,4 @@ class SearchForm extends Component {
   }
 }
 
-export default SearchForm;
+export default connect(null, null)(SearchForm);
